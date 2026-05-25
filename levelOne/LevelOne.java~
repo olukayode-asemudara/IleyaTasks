@@ -1,0 +1,8 @@
+public class LevelOne{
+    public static void main(String[] args){
+        
+        int[] evenNums = new int[3];
+        int[] oddNums = new int[3];
+        
+    }
+}

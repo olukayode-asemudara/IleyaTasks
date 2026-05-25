@@ -1,0 +1,9 @@
+# Ignore compiled files
+out/
+bin/
+
+# Ignore JUnit jar
+junit.jar
+
+# Ignore all jar files (optional)
+*.jar

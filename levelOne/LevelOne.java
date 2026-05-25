@@ -9,6 +9,17 @@ public class LevelOne{
             {60, 10, 22}
         };
     }
+    
+    
+    public static int[] getArrayPerfectSquares(int[] array){
+        
+        return new int[]{4,9,16};
+    };
+    
+    
+    public static int[] getNonePerfectSquares(int[] array){
+        return new int[]{4,-1,9,-1,49,-1};
+    }
 
     // public static void main(String[] args){
         

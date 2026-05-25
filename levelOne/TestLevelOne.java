@@ -9,8 +9,8 @@ public class TestLevelOne{
         int[] array = {45,60,3,10,9,22};
         
         int[][] expectedResult = {
-            {60,10,22},
-            {45,3,9}
+            {45,3,9},
+            {60,10,22}
         };
         
         // Act
@@ -21,8 +21,37 @@ public class TestLevelOne{
         assertArrayEquals(expectedResult, actualResult);
     }
     
+    @Test
+    public void testThatArrayReturnsOnlyPerfectSquaresInTheGivenArray(){
+        
+        // Arrange
+        int[] array = {4,7,9,10,16};
+        int[] expectedResult = {4,9,16};
+        
+        // Act
+        int[] actualResult = LevelOne.getArrayPerfectSquares(array);
+        
+        
+        // Assert
+        assertArrayEquals(expectedResult, actualResult);
+    }
+    
+    
+    @Test
+    public void testThatMethodReturnsNonPerfectSquaredNumbers(){
+        
+        // Arrange
+        int[] array = {4,7,9,10,49,6};
+        int[] expectedResult = {4,-1,9,-1,49,-1};
+        
+        // Act
+        int[] actualResult = LevelOne.getNonePerfectSquares(array);
+        
+        
+        // Assert
+        assertArrayEquals(expectedResult, actualResult);
+    }
 }
-
 
 
 

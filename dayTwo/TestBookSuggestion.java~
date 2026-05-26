@@ -1,0 +1,18 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TestBookSuggestion{
+    
+    @Test
+    public void testThatmethodDisplaysAllBooksInLibrary(){
+        
+        // Arrange
+        String[] allBooks = {"The Hobbit", "The Mystery", "Animal farm", "Brave Kingdom"};
+        
+        // Act
+        String actualResult = BookSuggestionSystem.showAllBooks(allBooks);
+        
+        // Assert
+        assertArrayEquals(allBooks, actualResult);
+    }
+}

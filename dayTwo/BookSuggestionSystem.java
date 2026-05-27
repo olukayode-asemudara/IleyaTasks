@@ -2,24 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BookSuggestionSystem {
-
-    static ArrayList<String> books = new ArrayList<>();
-
-    public static void getOptions() {
-
-        Scanner inputCollector = new Scanner(System.in);
-
-        System.out.println("Select menu option:");
-        int number = inputCollector.nextInt();
-        String string = inputCollector.nextLine();
-
-        switch (number) {
-
-            default:
-                System.out.println("Invalid input");
-        }
-
-    }
     
     public static String generateRandomBook(String[] books) {
     
@@ -29,23 +11,29 @@ public class BookSuggestionSystem {
         int randomPage = randomBookGenerator.nextInt(100);
     
         String randomBook = books[randomIndex] + ", page: " + randomPage;
-    
+        
         // System.out.println(randomBook);
         
         return randomBook;
     }
+    
+    
+    public static void addToBooksArray(String bookName){
+        ArrayList<String> books = new ArrayList<>();
+        books.add(bookName);
+    }
 
     public static void main(String[] args) {
+        Scanner inputCollector = new Scanner(System.in);
+    
+        // books array collection
+        ArrayList<String> books = new ArrayList<>();
+                   
+                
         
-        // getOptions();
+        while(true){
         
-        String[] books = {"Sizwe Bansi" , "Old man and the Sea", "Bright Hemmingway", "Lord of the rings", "Green Rider"};
-        
-        // // System.out.println(books[0]);
-        
-        System.out.println(generateRandomBook(books));
-        
-System.out.println("""
+        System.out.println("""
                 
     Welcome to the Book Suggestion System!
     
@@ -54,7 +42,36 @@ System.out.println("""
         3. Remove Book
         4. Update book
         5. Show books
-                
+    
+    Select option to begin
                 """);
+                
+        int option = inputCollector.nextInt();
+        inputCollector.nextLine();
+
+            
+            switch(option){
+            
+                case 1:
+                    System.out.println(generateRandomBook(books));
+                    System.out.print("Would you like to get another suggestion? (yes/no): ");
+                    String select = inputCollector.nextLine();
+                    
+                        if(select.toLowerCase().equals("yes")){
+                             System.out.println(generateRandomBook(books));
+                        } else{
+                            System.out.println("exited!!!");
+                            break;
+                        }
+                        
+                case 2:
+                    System.out.println("enter book title");
+                    String bookTitle = inputCollector.nextLine();
+                    addToBooksArray(books, bookTitle);
+                    
+                    
+            }
+        }
+
     }
 }

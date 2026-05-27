@@ -1,3 +1,87 @@
-public class BookSuggestionSystem{
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BookSuggestionSystem {
+
+    static ArrayList<String> books = new ArrayList<>();
     
+    public static String generateRandomBook(String[] books) {
+    
+        java.util.Random randomBookGenerator = new java.util.Random();
+    
+        int randomIndex = randomBookGenerator.nextInt(books.length);
+        int randomPage = randomBookGenerator.nextInt(100);
+    
+        String randomBook = books[randomIndex] + ", page: " + randomPage;
+    
+        // System.out.println(randomBook);
+        
+        return randomBook;
+    }
+    
+    
+    public static void addToBooksArray(String bookName){
+        System.out.println("Enter book title");
+        books.add(bookName);   
+        System.out.print(books); 
+    }
+
+    public static void main(String[] args) {
+    
+    
+        String[] books = {
+            "Harry Potter",
+            "Atomic Habits",
+            "The Hobbit",
+            "Rich Dad Poor Dad",
+            "Java Basics"
+            };
+                
+                
+        Scanner inputCollector = new Scanner(System.in);
+        
+    while(true){
+        
+        System.out.println("""
+                
+    Welcome to the Book Suggestion System!
+    
+        1. Get Suggestions
+        2. Add Book
+        3. Remove Book
+        4. Update book
+        5. Show books
+    
+    Select option to begin
+                """);
+                
+        int option = inputCollector.nextInt();
+        inputCollector.nextLine();
+
+            
+            switch(option){
+            
+                case 1:
+                    System.out.println(generateRandomBook(books));
+                    System.out.println("Would you like to get another suggestion? (yes/no): yes");
+                    String select = inputCollector.nextLine();
+                    
+                        if(select.toLowerCase().equals("yes")){
+                             System.out.println(generateRandomBook(books));
+                        } else{
+                            System.out.println("exited!!!");
+                            break;
+                        }
+                        
+                case 2:
+                    addToBooksArray()
+                    
+                    
+            }
+        }
+
+        String bookName = inputCollector.nextLine();
+        
+        addToBooksArray(bookName);
+    }
 }

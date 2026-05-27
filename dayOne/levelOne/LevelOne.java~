@@ -5,19 +5,12 @@ public class LevelOne{
         
         int[][] grid = new int[3][3];
         
-        for(int row = 0; row < array.lenght; row++){
-            for(int column = 0; column < array[row].length; column++){
-                grid[row] = array.length;
-                grid[column] = array.length;
-            }
-        }
         
-        // return new int[][]{
-        //     {45, 3, 9},
-        //     {60, 10, 22}
-        // };
         
-        return grid;
+        return new int[][]{
+            {45, 3, 9},
+            {60, 10, 22}
+        };
     }
     
     

@@ -21,6 +21,21 @@ public class TestLevelOne{
         assertArrayEquals(expectedResult, actualResult);
     }
     
+    
+    @Test
+    public void testWhetherArrayIsPalindromeOrNot(){
+        
+        // Arrange
+        int[] array = {1,2,3,2,1};
+        boolean expectedResult = true;
+
+        // Act
+        boolean actualResult = LevelOne.getPalindromeArray(array);
+
+        // Assert
+        assertTrue(actualResult);
+    }
+    
     @Test
     public void testThatArrayReturnsOnlyPerfectSquaresInTheGivenArray(){
         
@@ -56,5 +71,5 @@ public class TestLevelOne{
 
 
 
-// javac -cp "junit.jar:out" -d outTestFile.java CodeFile.java
+// javac -cp "junit.jar:out" -d out TestLevelOne.java LevelOne.java
 // java -cp "junit.jar:out" org.junit.platform.console.ConsoleLauncher --scan-class-path

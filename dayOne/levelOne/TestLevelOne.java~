@@ -9,8 +9,8 @@ public class TestLevelOne{
         int[] array = {45,60,3,10,9,22};
         
         int[][] expectedResult = {
-            {60,10,22}
-            {45,3,9},
+            {60,10,22},
+            {45,3,9}
         };
         
         // Act
@@ -20,6 +20,10 @@ public class TestLevelOne{
         // Assert
         assertArrayEquals(expectedResult, actualResult);
     }
+    
+    
+    @Test
+    public void 
     
     @Test
     public void testThatArrayReturnsOnlyPerfectSquaresInTheGivenArray(){

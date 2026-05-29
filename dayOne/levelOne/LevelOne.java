@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 public class LevelOne{
 
      public static int[][] getTwoDimensionalArray(int[] array) {
@@ -26,6 +27,36 @@ public class LevelOne{
      
          return grid;
      }
+     
+     
+     public static boolean getPalindromeArray(int[] array){
+         
+         boolean isPalindrome = false;
+         
+         int[] reversedArray = new int[array.length];
+         int reversedIndex = 0;
+         
+         for(int index = array.length -1; index >= 0 ; index--){
+             reversedArray[reversedIndex] = array[index];
+             reversedIndex++;
+         }
+             
+        // for(int index = 0; index < reversedArray.length; index++){
+                 
+        //     System.out.print(reversedArray[index]);
+        // }
+         
+         // if(reversedArray == array){
+         //     isPalindrome = true;
+         // } else{
+         //     isPalindrome = false;
+         // }
+         
+         // deitel page 350, ending paragraph
+         isPalindrome = Arrays.equals(reversedArray, array);
+         
+         return isPalindrome;
+     }
     
     
     public static int[] getArrayPerfectSquares(int[] array){
@@ -52,8 +83,8 @@ public class LevelOne{
     
     
     public static void main(String[] args){
-        int[] array = {45,60,3,10,9,22};
-        
-        getTwoDimensionalArray(array);
+        int[] array = {1,2,3,0};
+        System.out.println(getPalindromeArray(array));
     }
+    
 }

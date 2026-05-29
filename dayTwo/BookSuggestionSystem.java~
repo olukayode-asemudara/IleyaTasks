@@ -2,18 +2,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BookSuggestionSystem {
-
-    static ArrayList<String> books = new ArrayList<>();
     
     public static String generateRandomBook(String[] books) {
     
-        java.util.Random randomBookGenerator = new java.util.Random();
+        java.util.Random randomGenerator = new java.util.Random();
     
-        int randomIndex = randomBookGenerator.nextInt(books.length);
-        int randomPage = randomBookGenerator.nextInt(100);
+        int randomIndex = randomGenerator.nextInt(books.length);
+        int randomPage = randomGenerator.nextInt(100);
     
         String randomBook = books[randomIndex] + ", page: " + randomPage;
-    
+        
         // System.out.println(randomBook);
         
         return randomBook;
@@ -21,26 +19,19 @@ public class BookSuggestionSystem {
     
     
     public static void addToBooksArray(String bookName){
-        System.out.println("Enter book title");
-        books.add(bookName);   
-        System.out.print(books); 
+        ArrayList<String> books = new ArrayList<>();
+        books.add(bookName);
     }
 
     public static void main(String[] args) {
-    
-    
-        String[] books = {
-            "Harry Potter",
-            "Atomic Habits",
-            "The Hobbit",
-            "Rich Dad Poor Dad",
-            "Java Basics"
-            };
-                
-                
         Scanner inputCollector = new Scanner(System.in);
+    
+        // books array collection
+        ArrayList<String> books = new ArrayList<>();
+                   
+                
         
-    while(true){
+        while(true){
         
         System.out.println("""
                 
@@ -63,7 +54,7 @@ public class BookSuggestionSystem {
             
                 case 1:
                     System.out.println(generateRandomBook(books));
-                    System.out.println("Would you like to get another suggestion? (yes/no): yes");
+                    System.out.print("Would you like to get another suggestion? (yes/no): ");
                     String select = inputCollector.nextLine();
                     
                         if(select.toLowerCase().equals("yes")){
@@ -74,14 +65,13 @@ public class BookSuggestionSystem {
                         }
                         
                 case 2:
-                    addToBooksArray()
+                    System.out.println("enter book title");
+                    String bookTitle = inputCollector.nextLine();
+                    addToBooksArray(books, bookTitle);
                     
                     
             }
         }
 
-        String bookName = inputCollector.nextLine();
-        
-        addToBooksArray(bookName);
     }
 }

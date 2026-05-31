@@ -1,0 +1,54 @@
+// START
+// display "Welcome to Checkout App"
+// collect customer name
+// collect cashier name
+// ask user for number of products purchased
+
+// create arrays for: product names, quantities, prices
+
+// for each product purchased; collect product name, store product name, collect quantity purchased, store quantity, collect unit price, store price
+
+// set subtotal to 0
+
+// for each product; calculate item total
+//    item total = quantity × price
+//    add item total to subtotal
+
+// collect discount percentage
+// clculate discount amount
+
+// calculate VAT
+//     VAT = 7.5% of subtotal
+
+// calculate final amount
+// final amount = subtotal - discount amount + VAT
+
+public class CheckOutApp{
+    
+    static java.util.Scanner inputCollector = new java.util.Scanner(System.in);
+    
+    public static String getCustomerInfo(){
+        System.out.println("Enter customer name:");
+        return inputCollector.nextLine();
+    }
+    
+    public static String getCashierInfo(){
+        System.out.println("Enter cashier name:");
+        return inputCollector.nextLine();
+    }
+    
+    public static double getDiscount(double subtotal, double percentage){
+    
+        return subtotal * percentage / 100;
+    }
+    
+    public static double getVAT(double subtotal){
+        return subtotal * 0.075;
+    }
+    
+    
+    public static void main(String[] args){
+        System.out.println(getDiscount(25000, 2));
+    }
+    
+}

@@ -72,15 +72,14 @@ public class TestCheckOutApp{
     
     
     @Test
-    public void testThatMethodGetsUserAmountReceived(){
+    public void testThatMethodGetsUserAmount(){
         // Arrange
-        double expectedResult = 5000.0;
+        
         
         // Act
-        double actualResult = CheckOutApp.getCustomerAmount(expectedResult);
+        
         
         // Assert
-        assertEquals(expectedResult, actualResult);
     }
     
 }

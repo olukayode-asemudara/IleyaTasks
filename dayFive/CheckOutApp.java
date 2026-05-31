@@ -77,6 +77,11 @@ public class CheckOutApp{
             prices[index] = inputCollector.nextDouble();
         }
     }
+    
+    public static double getCustomerAmount(){        
+            System.out.println("How much did customer pay?");
+            return inputCollector.nextDouble();
+    }
         
 
     public static void main(String[] args) {
@@ -126,6 +131,7 @@ public class CheckOutApp{
         double discount = getDiscount(subtotal, discountPercentage);
         double vat = getVAT(subtotal);
         double finalAmount = subtotal - discount + vat;
+        double moneyReceived = getCustomerAmount();
         
         
         String header = """
@@ -175,7 +181,7 @@ THIS IS NOT AN RECEIPT KINDLY PAY %.2f
 How much did the customer give to you?
 
 %.2f
-        """, subtotal, discount, vat, finalAmount, finalAmount, subtotal);
+        """, subtotal, discount, vat, finalAmount, finalAmount, moneyReceived);
         
         }
 }

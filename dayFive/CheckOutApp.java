@@ -128,20 +128,54 @@ public class CheckOutApp{
         double finalAmount = subtotal - discount + vat;
         
         
-        System.out.println(""" 
+        String header = """
+                
+                SEMICOLON STORES
+                MAIN BRANCH
+                LOCATION: 312, HERBERT MACAULAY WAY, SABO YABA, LAGOS.
+                TEL: 03293828343
+                Date: 18-Dec-22 8:48:11pm
+                Cashier: %s
+                Customer Name: %s
+
+                ==========================================================
+                                    ITEM    QTY   PRICE         TOTAL(NGN)
+                ----------------------------------------------------------
+
+                """;
+
+        System.out.printf(header, cashierName, customerName);
         
-        SEMICOLON STORES
-        MAIN BRANCH
-        LOCATION: 312, HERBERT MACAULAY WAY, SABO YABA, LAGOS.
-        TEL: 03293828343
-        Date: 18-Dec-22 8:48:11 pm
-        Cashier: Cashier's Name
-        Customer Name: Chukwuma Adekunle Ciroma
+        for(int index = 0; index < products.size(); index++){
+            System.out.printf("%-30s %3d %8.2f %12.2f\n", 
+                products.get(index), 
+                quantities.get(index), 
+                prices.get(index), 
+                quantities.get(index) * prices.get(index));
+        }
         
-        ==========================================================
-                            ITEM    QTY   PRICE         TOTAL(NGN)
-        ----------------------------------------------------------
+        System.out.printf("""
+        
+----------------------------------------------------------
         """);
+        
+       System.out.printf("""
+
+                            Sub Total:          %.2f
+                             Discount:          %.2f
+                         VAT @ 7.50%%:          %.2f
+==========================================================
+                           Bill Total:          %.2f
+==========================================================
+THIS IS NOT AN RECEIPT KINDLY PAY %.2f
+==========================================================
+
+
+
+How much did the customer give to you?
+
+%.2f
+        """, subtotal, discount, vat, finalAmount, finalAmount, subtotal);
         
         }
 }

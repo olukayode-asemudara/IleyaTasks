@@ -8,7 +8,6 @@ public class TestCheckOutApp{
         // Arrange
         String expectedResult = "Olukayode";
         
-        
         // Act
         String actualResult = CheckOutApp.getCustomerInfo();
         
@@ -21,7 +20,6 @@ public class TestCheckOutApp{
         // Arrange
         String expectedResult = "Adetola";
         
-        
         // Act
         String actualResult = CheckOutApp.getCashierInfo();
         
@@ -29,9 +27,37 @@ public class TestCheckOutApp{
         assertEquals(expectedResult, actualResult);
     }
     
+
+    @Test
+    public void testGetSubtotal_normalCase() {
+        // Arrange
+        int[] quantities = {2, 3, 1};
+        double[] prices = {1000.0, 500.5, 2000.0};
+        
+        // Act
+        double result = CheckOutApp.getSubtotal(quantities, prices);
+        
+        // Assert
+        assertEquals(5501.5, result, 0.001);
+    }
+    
+    
+    @Test
+    public void testGetSubtotal_singleItem() {
+        // Arrange
+        int[] quantities = {5};
+        double[] prices = {9.99};
+        
+        // Act
+        double result = CheckOutApp.getSubtotal(quantities, prices);
+        
+        // Assert
+        assertEquals(49.95, result, 0.001);
+    }
+    
+    
     @Test
     public void testThatMethodCalculatesDiscount(){
-        
         // Arrange
         double subTotal = 3000;
         double percentage = 0.5;
@@ -44,9 +70,9 @@ public class TestCheckOutApp{
         assertEquals(expectedResult, actualResult);
     }
     
+    
     @Test
     public void testThatMethodCalculatesVATValue(){
-        
         // Arrange
         
         
@@ -55,6 +81,7 @@ public class TestCheckOutApp{
         
         // Assert
     }
+    
 }
 
 

@@ -51,4 +51,16 @@ public class CheckOutApp{
         System.out.println(getDiscount(25000, 2));
     }
     
+    
+    public static double getSubtotal(int[] quantities, double[] prices) {
+    
+        double subtotal = 0;
+    
+        for(int index = 0; index < quantities.length; index++) {
+            subtotal += quantities[index] * prices[index];
+        }
+    
+        return subtotal;
+    }
+    
 }

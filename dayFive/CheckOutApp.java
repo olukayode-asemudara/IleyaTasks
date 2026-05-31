@@ -23,32 +23,28 @@
 // calculate final amount
 // final amount = subtotal - discount amount + VAT
 
+import java.util.ArrayList;
 public class CheckOutApp{
     
     static java.util.Scanner inputCollector = new java.util.Scanner(System.in);
     
     public static String getCustomerInfo(){
-        System.out.println("Enter customer name:");
+        System.out.println("What is the customer's name:");
         return inputCollector.nextLine();
     }
     
     public static String getCashierInfo(){
-        System.out.println("Enter cashier name:");
+        System.out.println("What is your name:");
         return inputCollector.nextLine();
     }
     
     public static double getDiscount(double subtotal, double percentage){
-    
+        System.out.println("How much discount will he get:");
         return subtotal * percentage / 100;
     }
     
     public static double getVAT(double subtotal){
         return subtotal * 0.075;
-    }
-    
-    
-    public static void main(String[] args){
-        System.out.println(getDiscount(25000, 2));
     }
     
     
@@ -63,4 +59,89 @@ public class CheckOutApp{
         return subtotal;
     }
     
+    
+    public static void getProducts(String[] products, int[] quantities, double[] prices) {
+    
+        for(int index = 0; index < products.length; index++) {
+    
+            System.out.println("What did the user buy?");
+            products[index] = inputCollector.nextLine();
+            for(int id = 0; id < products.length; id++){
+                System.out.println(products[id]);
+            }
+    
+            System.out.println("How many pieces?");
+            quantities[index] = inputCollector.nextInt();
+    
+            System.out.println("How much per unit?");
+            prices[index] = inputCollector.nextDouble();
+        }
+    }
+        
+
+    public static void main(String[] args) {
+    
+        // I'm using ArrayList since my array doesn't have a fixed size upfront
+        ArrayList<String> products = new ArrayList<>();
+        ArrayList<Integer> quantities = new ArrayList<>();
+        ArrayList<Double> prices = new ArrayList<>();
+        
+        String customerName = getCustomerInfo();
+        
+        String addMore = "yes";
+        while(addMore.equalsIgnoreCase("yes")){
+            System.out.println("What did the user buy?");
+            products.add(inputCollector.nextLine());
+
+            System.out.println("How many pieces?");
+            quantities.add(inputCollector.nextInt());
+
+            System.out.println("How much per unit?");
+            prices.add(inputCollector.nextDouble());
+
+            // This prevents Scanner issues when switching back to collect strings
+            // Exception in thread "main" java.util.InputMismatchException
+            inputCollector.nextLine();
+
+            System.out.println("Add more Items? ");
+            addMore = inputCollector.nextLine();
+        }
+        
+        System.out.print("What is your name?\n");
+        String cashierName = inputCollector.nextLine();
+
+        System.out.print("How much discount will he get\n");
+        double discountPercentage = inputCollector.nextDouble();
+
+        // Convert ArrayLists to arrays for your existing methods
+        int[] quantityArray = new int[quantities.size()];
+        double[] priceArray = new double[prices.size()];
+
+        for(int index = 0; index < quantities.size(); index++){
+            quantityArray[index] = quantities.get(index);
+            priceArray[index] = prices.get(index);
+        }
+
+        double subtotal = getSubtotal(quantityArray, priceArray);
+        double discount = getDiscount(subtotal, discountPercentage);
+        double vat = getVAT(subtotal);
+        double finalAmount = subtotal - discount + vat;
+        
+        
+        System.out.println(""" 
+        
+        SEMICOLON STORES
+        MAIN BRANCH
+        LOCATION: 312, HERBERT MACAULAY WAY, SABO YABA, LAGOS.
+        TEL: 03293828343
+        Date: 18-Dec-22 8:48:11 pm
+        Cashier: Cashier's Name
+        Customer Name: Chukwuma Adekunle Ciroma
+        
+        ==========================================================
+                            ITEM    QTY   PRICE         TOTAL(NGN)
+        ----------------------------------------------------------
+        """);
+        
+        }
 }

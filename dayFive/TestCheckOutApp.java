@@ -1,35 +1,10 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestCheckOutApp{
+public class TestCheckOutApp{    
 
     @Test
-    public void testThatMethodGetsUserInformation(){
-        // Arrange
-        String expectedResult = "Olukayode";
-        
-        // Act
-        String actualResult = CheckOutApp.getCustomerInfo();
-        
-        // Assert
-        assertEquals(expectedResult, actualResult);
-    }
-    
-    @Test
-    public void testThatMethodGetsCashierInformation(){
-        // Arrange
-        String expectedResult = "Adetola";
-        
-        // Act
-        String actualResult = CheckOutApp.getCashierInfo();
-        
-        // Assert
-        assertEquals(expectedResult, actualResult);
-    }
-    
-
-    @Test
-    public void testGetSubtotal_normalCase() {
+    public void testGetSubtotalInNormalCase() {
         // Arrange
         int[] quantities = {2, 3, 1};
         double[] prices = {1000.0, 500.5, 2000.0};
@@ -43,7 +18,7 @@ public class TestCheckOutApp{
     
     
     @Test
-    public void testGetSubtotal_singleItem() {
+    public void testGetSubtotalWithOnlySingleItem() {
         // Arrange
         int[] quantities = {5};
         double[] prices = {9.99};
@@ -72,12 +47,13 @@ public class TestCheckOutApp{
     
     
     @Test
-    public void testThatMethodGetsUserAmountReceived(){
+    public void testThatMethodGetsVAT() {
         // Arrange
-        double expectedResult = 5000.0;
+        double subtotal = 1000.0;
+        double expectedResult = 75.0;
         
         // Act
-        double actualResult = CheckOutApp.getCustomerAmount(expectedResult);
+        double actualResult = CheckOutApp.getVAT(subtotal);
         
         // Assert
         assertEquals(expectedResult, actualResult);

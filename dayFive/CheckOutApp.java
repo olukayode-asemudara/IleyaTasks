@@ -29,17 +29,16 @@ public class CheckOutApp{
     static java.util.Scanner inputCollector = new java.util.Scanner(System.in);
     
     public static String getCustomerInfo(){
-        System.out.println("What is the customer's name:");
+        System.out.println("What is your customer's name? ");
         return inputCollector.nextLine();
     }
-    
+
     public static String getCashierInfo(){
-        System.out.println("What is your name:");
+        System.out.println("What is your name? ");
         return inputCollector.nextLine();
     }
     
     public static double getDiscount(double subtotal, double percentage){
-        System.out.println("How much discount will he get:");
         return subtotal * percentage / 100;
     }
     
@@ -78,8 +77,8 @@ public class CheckOutApp{
         }
     }
     
-    public static double getCustomerAmount(double amount){        
-            System.out.println("How much did customer pay?");
+    public static double getCustomerAmount(){     
+            System.out.println("How much did customer pay?");   
             return inputCollector.nextDouble();
     }
         
@@ -92,31 +91,34 @@ public class CheckOutApp{
         ArrayList<Double> prices = new ArrayList<>();
         
         String customerName = getCustomerInfo();
-        
+
+
         String addMore = "yes";
         while(addMore.equalsIgnoreCase("yes")){
-            System.out.println("What did the user buy?");
+            System.out.println("What did the user buy? ");
             products.add(inputCollector.nextLine());
 
-            System.out.println("How many pieces?");
+            System.out.println("How many pieces? ");
             quantities.add(inputCollector.nextInt());
 
-            System.out.println("How much per unit?");
+            System.out.println("How much per unit? ");
             prices.add(inputCollector.nextDouble());
-
-            // This prevents Scanner issues when switching back to collect strings
-            // Exception in thread "main" java.util.InputMismatchException
+            
+            // consume newline
             inputCollector.nextLine();
 
             System.out.println("Add more Items? ");
             addMore = inputCollector.nextLine();
         }
-        
-        System.out.print("What is your name?\n");
-        String cashierName = inputCollector.nextLine();
 
-        System.out.print("How much discount will he get\n");
+        String cashierName = getCashierInfo();
+
+        System.out.println("How much discount will he get: ");
         double discountPercentage = inputCollector.nextDouble();
+        inputCollector.nextLine();
+
+        double moneyReceived = getCustomerAmount();
+        // inputCollector.nextDouble();
 
         // Convert ArrayLists to arrays for your existing methods
         int[] quantityArray = new int[quantities.size()];
@@ -131,9 +133,6 @@ public class CheckOutApp{
         double discount = getDiscount(subtotal, discountPercentage);
         double vat = getVAT(subtotal);
         double finalAmount = subtotal - discount + vat;
-        double moneyReceived = inputCollector.nextDouble();
-        getCustomerAmount(moneyReceived);
-        
         
         String header = """
                 

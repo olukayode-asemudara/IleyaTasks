@@ -17,6 +17,31 @@ public class TestBookSuggestion{
         assertEquals(expectedResult, actualResult);
         
     }
+    
+    @Test
+    public void testThatICanAddANewBookToTheBooksArray(){
+        
+        // Arrange
+        
+        
+        // Act
+        
+        
+        // Assert
+    }
+    
+    
+    @Test
+    public void testThatThereAreNoDuplicateEntryBooksInTheArray(){
+        
+        // Arrange
+        
+        
+        // Act
+        
+        
+        // Assert
+    }
 }
 
 

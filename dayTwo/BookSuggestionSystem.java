@@ -1,43 +1,56 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BookSuggestionSystem {
-
-    static ArrayList<String> books = new ArrayList<>();
     
-    public static String generateRandomBook() {
+    public static void generateRandomBook(ArrayList<String> books) {
+        if(books.isEmpty()) {
+            System.out.println("No books available. Add some books first!");
+            return;
+        }
     
         java.util.Random randomGenerator = new java.util.Random();
     
         int randomIndex = randomGenerator.nextInt(books.size());
-        int randomPage = randomGenerator.nextInt(100);
+        String randomBook = books.get(randomIndex);
+        int randomPage = randomGenerator.nextInt(100) + 1;
     
-        String randomBook = books.get(randomIndex) + ", page: " + randomPage;
         
-        System.out.println(randomBook);
-        
-        return randomBook;
+        System.out.println("Book title: " + randomBook);
+        System.out.println("page: " +randomPage);
     }
     
-    
-    public static void addToBooksArray(String bookName) {
-        
-        books.add(bookName);
-    
-        System.out.println(bookName + " added successfully!");
+
+    public static void removeFromBooksArray(ArrayList<String> books, String bookName) {
+       
+        if(books.remove(bookName)) {
+            System.out.println(bookName + " removed successfully!");
+        } else {
+            System.out.println(bookName + " not found in list.");
+        }
     }
     
-    public static void getAllBooks(){
-        
+    public static void showAllBooks(ArrayList<String> books){
+        if(books.isEmpty()) {
+            System.out.println("No books added yet.");
+            return;
+        }
+        System.out.println("\nYour books:");
+        for(int index = 0; index < books.size(); index++) {
+            System.out.println((index+1) + ". " + books.get(index));
+        }
     }
     
     
     public static void main(String[] args){
+    
+        ArrayList<String> books = new ArrayList<>();
         java.util.Scanner inputCollector = new java.util.Scanner(System.in);
+                    
+        String bookOpen = "yes";
         
+        while(bookOpen.equalsIgnoreCase("yes")){
         
         System.out.println("""
-                    
         Welcome to the Book Suggestion System!
         
             1. Get Suggestions
@@ -48,35 +61,48 @@ public class BookSuggestionSystem {
         
         Select option to begin
                     """);
-                    
-        while(true){
         
-            int day = inputCollector.nextInt();
+            int option = inputCollector.nextInt();
+            inputCollector.nextLine(); 
             
-            switch(day){
+            switch(option){
             
-                case 1:
+            case 1:
                 if(books.isEmpty()) {
-                    System.out.println("No books added yet.");
+                    System.out.println("No books available. Add some books first!");
+                    break;
                 }
-                else {
-                    System.out.println(generateRandomBook());
-                }
+                
+                String choice;
+                do {
+                    generateRandomBook(books);
+                    
+                    System.out.print("Would you like to get another suggestion? (yes/no): ");
+                    choice = inputCollector.nextLine();
+                    
+                } while(choice.equalsIgnoreCase("yes"));
+                
                 break;
                     
                 case 2:
-                    System.out.println("Enter book name:");
+                    System.out.print("Enter book name: ");
                     String bookName = inputCollector.nextLine();
-                    addToBooksArray(bookName);
-
+                    books.add(bookName);
+                    System.out.println("Book added successfully!");
                     break;
                     
                 case 3:
-                    System.out.println("Update Books");
+                    System.out.print("Enter book name to remove: ");
+                    String removeName = inputCollector.nextLine();
+                    removeFromBooksArray(books, removeName);
                     break;
                     
                 case 4:
-                    System.out.println("Show all Books");
+                    showAllBooks(books);
+                    break;
+                    
+                case 5:
+                    showAllBooks(books);
                     break;
                     
                 default:

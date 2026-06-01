@@ -99,7 +99,7 @@
         
     for (let index = 0; index < products.length; index++) {
         console.log(
-            `${products[index]} ${quantities[index]} ${prices[index].toFixed(2)} ${(quantities[index] * prices[index]).toFixed(2)}`
+            `${products[index]} ${quantities[index]} ${prices[index]} ${(quantities[index] * prices[index])}`
         );
     }
             
@@ -133,5 +133,5 @@
 
     How much did the customer give to you?
 
-    ${moneyReceived.toFixed(2)}
+    ${moneyReceived}
     `);

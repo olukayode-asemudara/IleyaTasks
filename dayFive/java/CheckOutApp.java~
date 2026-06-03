@@ -29,25 +29,13 @@ public class CheckOutApp{
     static java.util.Scanner inputCollector = new java.util.Scanner(System.in);
     
     public static String getCustomerInfo(){
-        String name;
-        while(true) {
-            System.out.print("What is your customer's name? ");
-            name = inputCollector.nextLine().trim();
-            if(!name.isEmpty()) break;
-            System.out.println("Name cannot be empty!");
-        }
-        return name.replace(" ", "");
+        System.out.println("What is your customer's name? ");
+        return inputCollector.nextLine();
     }
 
     public static String getCashierInfo(){
-        String name;
-        while(true){        
-            System.out.println("What is your name? ");
-            name = inputCollector.nextLine().trim();
-            if(!name.isEmpty()) break;
-            System.out.println("Name cannot be empty!");
-        }
-        return name.replace(" ", "");
+        System.out.println("What is your name? ");
+        return inputCollector.nextLine();
     }
     
     public static double getDiscount(double subtotal, double percentage){
@@ -74,9 +62,12 @@ public class CheckOutApp{
     public static void getProducts(String[] products, int[] quantities, double[] prices) {
     
         for(int index = 0; index < products.length; index++) {
-            
+    
             System.out.println("What did the user buy?");
             products[index] = inputCollector.nextLine();
+            for(int id = 0; id < products.length; id++){
+                System.out.println(products[id]);
+            }
     
             System.out.println("How many pieces?");
             quantities[index] = inputCollector.nextInt();
@@ -142,7 +133,6 @@ public class CheckOutApp{
         double discount = getDiscount(subtotal, discountPercentage);
         double vat = getVAT(subtotal);
         double finalAmount = subtotal - discount + vat;
-        double actualAmount = moneyReceived - finalAmount;
         
         String header = """
                 
@@ -183,7 +173,7 @@ public class CheckOutApp{
 ==========================================================
                            Bill Total:          %.2f
 ==========================================================
-KINDLY COLLECT YOUR CHANGE OF %.2f
+THIS IS NOT AN RECEIPT KINDLY PAY %.2f
 ==========================================================
 
 
@@ -192,7 +182,7 @@ How much did the customer give to you?
 
 %.2f
 
-        """, subtotal, discount, vat, finalAmount, actualAmount, moneyReceived);
+        """, subtotal, discount, vat, finalAmount, finalAmount, moneyReceived);
         
         }
 }

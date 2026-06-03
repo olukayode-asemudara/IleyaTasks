@@ -44,6 +44,10 @@ public class BookSuggestionSystem {
     public static void main(String[] args){
     
         ArrayList<String> books = new ArrayList<>();
+        
+        books.add("hobbit");
+        books.add("gambit");
+        books.add("green rider");
         java.util.Scanner inputCollector = new java.util.Scanner(System.in);
                     
         String bookOpen = "yes";

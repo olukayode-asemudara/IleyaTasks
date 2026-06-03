@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestBookSuggestion{
-    
+
     @Test
     public void testThatMethodGeneratesRandomBook(){
         
@@ -43,8 +43,3 @@ public class TestBookSuggestion{
         // Assert
     }
 }
-
-
-
-// javac -cp "junit.jar:out" -d out TestBookSuggestion.java BookSuggestionSystem.java
-// java -cp "junit.jar:out" org.junit.platform.console.ConsoleLauncher --scan-class-path

@@ -1,25 +1,16 @@
 // START
 // display "Welcome to Checkout App"
+// create arrays for: product names, quantities, prices
 // collect customer name
 // collect cashier name
 // ask user for number of products purchased
-
-// create arrays for: product names, quantities, prices
-
 // for each product purchased; collect product name, store product name, collect quantity purchased, store quantity, collect unit price, store price
-
 // set subtotal to 0
-
-// for each product; calculate item total
-//    item total = quantity × price
-//    add item total to subtotal
-
+// for each product; calculate, item total: item total = quantity × price, add item total to subtotal
 // collect discount percentage
-// clculate discount amount
-
+// calculate discount amount
 // calculate VAT
-//     VAT = 7.5% of subtotal
-
+// VAT = 7.5% of subtotal
 // calculate final amount
 // final amount = subtotal - discount amount + VAT
 
@@ -36,7 +27,7 @@ public class CheckOutApp{
             if(!name.isEmpty()) break;
             System.out.println("Name cannot be empty!");
         }
-        return name.replace(" ", "");
+        return name;
     }
 
     public static String getCashierInfo(){
@@ -47,7 +38,7 @@ public class CheckOutApp{
             if(!name.isEmpty()) break;
             System.out.println("Name cannot be empty!");
         }
-        return name.replace(" ", "");
+        return name;
     }
     
     public static double getDiscount(double subtotal, double percentage){
@@ -59,12 +50,12 @@ public class CheckOutApp{
     }
     
     
-    public static double getSubtotal(int[] quantities, double[] prices) {
+    public static double getSubtotal(ArrayList<Integer> quantities, ArrayList<Double> prices) {
     
         double subtotal = 0;
     
-        for(int index = 0; index < quantities.length; index++) {
-            subtotal += quantities[index] * prices[index];
+        for(int index = 0; index < quantities.size(); index++) {
+            subtotal += quantities.get(index) * prices.get(index);
         }
     
         return subtotal;
@@ -99,6 +90,7 @@ public class CheckOutApp{
         ArrayList<Integer> quantities = new ArrayList<>();
         ArrayList<Double> prices = new ArrayList<>();
         
+        System.out.println("Welcome to Semicolon Stores");
         String customerName = getCustomerInfo();
 
 
@@ -129,16 +121,7 @@ public class CheckOutApp{
         double moneyReceived = getCustomerAmount();
         // inputCollector.nextDouble();
 
-        // Convert ArrayLists to arrays for your existing methods
-        int[] quantityArray = new int[quantities.size()];
-        double[] priceArray = new double[prices.size()];
-
-        for(int index = 0; index < quantities.size(); index++){
-            quantityArray[index] = quantities.get(index);
-            priceArray[index] = prices.get(index);
-        }
-
-        double subtotal = getSubtotal(quantityArray, priceArray);
+        double subtotal = getSubtotal(quantities, prices);
         double discount = getDiscount(subtotal, discountPercentage);
         double vat = getVAT(subtotal);
         double finalAmount = subtotal - discount + vat;

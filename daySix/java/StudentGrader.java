@@ -3,7 +3,8 @@ Start
 1.collect total number of students that sat for the exam]
 2.collect the total number of quiz attempted
 3.create a two dimensional array that stores both the data of the students that enrolled and the number of quiz questions attempted
-4.collect the total scores of each student inside the quiz's array
+4.collect the total scores of each student inside the quiz's array, score must be between 0 and 100
+5.display class summary after input collection
 */
 import java.util.Scanner;
 public class StudentGrader{

@@ -3,13 +3,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentGraderTest{
   @Test
-  void testThatArrayLengthIsNotEmpty(){}
+  public void testThatArrayLengthIsNotEmpty(){}
   
   @Test
-  void testThatNoInvalidScoreIsSubmittedAsScore(){}
+  public void testThatNoInvalidScoreIsSubmittedAsScore(){}
   
-  @Test
-  void testThatEachStudentAverageScoreIsDetermined(){}
+@Test
+public void testThatEachStudentAverageScoreIsDetermined() {
+    // arrange
+    int[][] studentOneSubjects = {
+        {10, 20, 30, 40},
+        {10, 10, 20, 20}
+    };
+    int[] expectedResult = {100, 60};
+    // act
+    int[] actualResult = StudentGrader.getOneStudentTotalScore(studentOneSubjects);
+    // assert
+    assertArrayEquals(expectedResult, actualResult);
+}
   
   @Test
   void testThatEachSubjectScoresAverageIsDeterminedForEachStudent(){}

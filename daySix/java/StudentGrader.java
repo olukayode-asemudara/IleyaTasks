@@ -21,7 +21,7 @@ public class StudentGrader{
         for (int subject = 0; subject < scores[student].length; subject++) {
           System.out.print(scores[student][subject] + " ");
         }
-        System.out.println();
+          System.out.println();
         }
   }
  
@@ -31,22 +31,30 @@ public class StudentGrader{
     for(int student = 0; student < subjects.length; student++){
       int total = 0;
       for(int subject = 0; subject < subjects[student].length; subject ++){
-        System.out.print(subjects[student][subject] + " ");
         total += subjects[student][subject];
         eachStudentTotal[student] = total;
       }
-      System.out.println("total: " + total);
+      System.out.print("total: " + total);
       System.out.println();
     }
     return eachStudentTotal;
   }
   
-  /*
-  public static int getHighestScoringStudentOnOneSubject(){
+public static double[] getAverageScoreOfEachStudent(int[][] subjects){
+    double[] average = new double[subjects.length];
+    for(int student = 0; student < subjects.length; student++){
+        int total = 0;
+        System.out.print("Average score for " + (student + 1) + ": ");
+        for(int subject = 0; subject < subjects[student].length; subject++){
+            total += subjects[student][subject];
+        }
+        average[student] = (double) total / subjects[student].length;
+        System.out.print(average[student]);
+        System.out.println();
+    }
+    return average;
+}
   
-  return subjectOffered[highestScore];
-  }
-  */
 
 	public static void main(String[] args){
 	  Scanner inputCollector = new Scanner(System.in);
@@ -63,16 +71,36 @@ public class StudentGrader{
 	  	int[][] studentGrades = new int[studentsTotal][subjectsRegistered];
 	  	
     for (int student = 0; student < studentGrades.length; student++) {
-      System.out.println("Student " + (student + 1) + ": ");
+      System.out.println("Entering score for student" + (student + 1) + ": ");
     for (int subject = 0; subject < studentGrades[student].length; subject++) {
-      System.out.print("enter studen't subjects scores: ");
-      studentGrades[student][subject] = inputCollector.nextInt();
+      System.out.print("Enter score for subject " + (subject + 1) + ": ");
+      int score = inputCollector.nextInt();
+      studentGrades[student][subject] = score;
     }
+      System.out.println("saving>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+	  	  System.out.println("saved");
       System.out.println();
     }
   
   getOneStudentTotalScore(studentGrades);
   displayStudentsTestScores(studentGrades);
+  getAverageScoreOfEachStudent(studentGrades);
+
+
+
+/*  
+int[][] studentGrades = {
+  {1,2,3,4,5},
+  {6,7,8,9,0}
+};
+    	
+System.out.printf("""
+===================================================
+Student     Sub1    Sub2    Sub3    TOT   AVE   POS
+===================================================
+""");
+*/
+
   
 	}
 }

@@ -15,13 +15,14 @@ Start
 import java.util.Scanner;
 public class StudentGrader{
 
-  public static void displayStudentsTestScores(int[][] scores){
-      for(int row = 0; row < scores.length; row++){
-      for(int column = 0; column < scores[row].length; column++){
-        System.out.print(scores[row][column] + " ");
-      }
-      System.out.println();
-    } 
+  public static void displayStudentsTestScores(int[][] scores) {
+        for (int student = 0; student < scores.length; student++) {
+          System.out.print("Scores for student " + (student + 1) + ": ");
+        for (int subject = 0; subject < scores[student].length; subject++) {
+          System.out.print(scores[student][subject] + " ");
+        }
+        System.out.println();
+        }
   }
  
  
@@ -39,50 +40,38 @@ public class StudentGrader{
     }
     return eachStudentTotal;
   }
+  
+  /*
+  public static int getHighestScoringStudentOnOneSubject(){
+  
+  return subjectOffered[highestScore];
+  }
+  */
 
 	public static void main(String[] args){
-	  /* Scanner inputCollector = new Scanner(System.in);
-	  System.out.print("enter number of students: ");
-    int studentsTotal = inputCollector.nextInt();
-    System.out.print("enter number of quiz done: ");
-    int quizTotal = inputCollector.nextInt();
-    
-    int[][] studentGrades = new int[studentsTotal][quizTotal];
-    
-    for(int student = 0; student < studentGrades.length; student++){
-      System.out.println("student number " + student);
-      for(int quiz = 0; quiz < studentGrades[student].length; quiz++){
-        System.out.println("quiz number " + quiz);
-        //System.out.print("Subject " + (subject + 1) + ": ");
-        System.out.print("enter student " + student + " exam's score: ");
-        studentGrades[student][quiz] = inputCollector.nextInt();
-        
-      }
+	  Scanner inputCollector = new Scanner(System.in);
+	  
+	  System.out.print("enter total number of students: ");
+	  int studentsTotal = inputCollector.nextInt();
+	  
+	  	System.out.print("enter total number subjects registered: ");
+	  int subjectsRegistered = inputCollector.nextInt();
+	  
+	  System.out.println("saving>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+	  	System.out.println("saved");
+	  	
+	  	int[][] studentGrades = new int[studentsTotal][subjectsRegistered];
+	  	
+    for (int student = 0; student < studentGrades.length; student++) {
+      System.out.println("Student " + (student + 1) + ": ");
+    for (int subject = 0; subject < studentGrades[student].length; subject++) {
+      System.out.print("enter studen't subjects scores: ");
+      studentGrades[student][subject] = inputCollector.nextInt();
     }
-    
-    // lets see whether array data is filled with results that I have collected
-  */
-  //[2][4]
-  int[][] subjectsOffered = {
-  // total number of students registered is two
-  {20,30,40,50}, //student one subjects
-  {10,20,30,40} //student two subjects
-  
-  };
-  
-/*  for(int student = 0; student < subjects.length; student++){
-      int total = 0;
-      for(int subject = 0; subject < subjects[student].length; subject ++){
-        System.out.print(subjects[student][subject] + " ");
-        total += subjects[student][subject];
-        eachStudentTotal[student] = total;
-      }
-      System.out.println("total: " + total);
       System.out.println();
-  }*/
+    }
   
-  
-  getOneStudentTotalScore(subjectsOffered);
+  getOneStudentTotalScore(studentGrades);
   displayStudentsTestScores(studentGrades);
   
 	}

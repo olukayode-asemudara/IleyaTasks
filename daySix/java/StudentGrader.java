@@ -6,6 +6,7 @@ Start
 4.collect the total scores of each student inside subjects offered array, score must be between 0 and 100
 5.display class summary after input collection by attempting to do the following using a method;
   1.calculate for each student's average
+  2.calculate each student's total
   2.calculate for highest scoring student on each subject down to the total subjects taken
   3.calculate for the lowest scoring student on each subject down to the total subjects taken
   4.determine the number of passes and fails for each student based on the subjects

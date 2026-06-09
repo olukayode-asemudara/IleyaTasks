@@ -8,22 +8,33 @@ public class StudentGraderTest{
   @Test
   public void testThatNoInvalidScoreIsSubmittedAsScore(){}
   
-@Test
-public void testThatEachStudentAverageScoreIsDetermined() {
-    // arrange
-    int[][] studentOneSubjects = {
-        {10, 20, 30, 40},
-        {10, 10, 20, 20}
-    };
-    int[] expectedResult = {100, 60};
-    // act
-    int[] actualResult = StudentGrader.getOneStudentTotalScore(studentOneSubjects);
-    // assert
-    assertArrayEquals(expectedResult, actualResult);
-}
+  @Test
+  public void testThatEachStudentTotalScoreIsDetermined() {
+      // arrange
+      int[][] studentOneSubjects = {
+          {10, 20, 30, 40},
+          {10, 10, 20, 20}
+      };
+      int[] expectedResult = {100, 60};
+      // act
+      int[] actualResult = StudentGrader.getOneStudentTotalScore(studentOneSubjects);
+      // assert
+      assertArrayEquals(expectedResult, actualResult);
+  }
   
   @Test
-  void testThatEachSubjectScoresAverageIsDeterminedForEachStudent(){}
+  void testThatEachStudentAverageScoreIsDetermined(){
+      // arrange
+      int[][] studentOneSubjects = {
+          {10, 20, 30, 40},
+          {10, 10, 20, 20}
+      };
+      double[] expectedResult = {25, 15};
+      // act
+      double[] actualResult = StudentGrader.getAverageScoreOfEachStudent(studentOneSubjects);
+      // assert
+      assertArrayEquals(expectedResult, actualResult);
+  }
   
   @Test
   void testThatNoStudentHasABlankScore(){}
